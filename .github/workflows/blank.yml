@@ -1,2 +1,11 @@
-- name: Rancher CLI
-  uses: lambda-curry/Rancher-CLI@1.8.0
+jobs:
+  rancher_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rancher Action
+        uses: colbyhill21/Rancher-Action@1.1
+        with:
+          args: '"get pods"'
+          token: ${{ secrets.RANCHER_TOKEN }}
+          context: ${{ secrets.RANCHER_CONTEXT }}
+          url: ${{ secrets.RANCHER_URL }}
